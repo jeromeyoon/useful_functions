@@ -1,3 +1,5 @@
 *.swp
 *.pyc
 *.m~
+*.txt
+*.bin
