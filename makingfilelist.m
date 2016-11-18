@@ -1,6 +1,6 @@
 clear all;
 close all;
-mainpath ='/research2/Oxford_data';
+mainpath ='/research2/Oxford_png';
 folders  = dir(mainpath);
 leftname ='Oxford_left.txt';
 rightname ='Oxford_right.txt';

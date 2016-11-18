@@ -51,13 +51,15 @@ def write_ppm(file_,imagepath,savepath,xval):
 	fline = file_.readline()
 	fpath = imagepath.readline()
 	if not fline: break
-	pdb.set_trace()
-	im = misc.imread(os.path.join(fpath[:-1].rstrip(),'stereo/left',fline[:-1].rstrip()),'RGB')   
+	im = misc.imread(os.path.join(fpath[:-1].rstrip(),'stereo/left',fline[:-1].rstrip()))   
     	height, width, nc = im.shape
     	assert nc == 3
-        if np.mod(count,10000)==0:
-	    savepath2 = os.path.join(savepath,'03d%' %np.mod(count,10000))
-            os.makedirs(savepath2)
+	savepath2 = os.path.join(savepath,fpath[22:-1].rstrip(),'left')
+	pdb.set_trace()
+	if not os.path.exists(savepath2):
+	    os.makedirs(savepath2)
+	    count =0
+	pdb.set_trace()
 	ppm_name  = os.path.join(savepath2,'left_%08d.ppm' %count)
         count +=1	
         f = open(ppm_name, 'w')
@@ -89,7 +91,7 @@ if __name__=='__main__':
       #filelist ='left_stereo.txt' # image list
       filelist =sys.argv[1] # image list
       f= open(filelist,'r')
-      imgpath = sys.argv[2]
+      imgpath = sys.argv[2] #folder path
       fi = open(imgpath,'r')
       savepath = sys.argv[3]
       write_ppm(f,fi,savepath,255)
